@@ -56,18 +56,24 @@ div:empty {
   background: rgba(88, 88, 88, 0.2);
 }
 
-.v-calendar-weekly__day.v-past {
+/* .v-calendar-weekly__day.v-past, */
+.v-calendar-weekly__day.v-future, .v-calendar-weekly__day.v-present{
   position: relative;
   padding-top: 24px;
   transition: .2s;
 }
 
-.v-calendar-weekly__day.v-past:hover {
+.v-calendar-weekly__day.v-past:hover, .v-calendar-weekly__day.v-future:hover, .v-calendar-weekly__day.v-present:hover{
   cursor: pointer;
   background-color: #f0fffc;
 }
 
-.v-calendar-weekly__day.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small.transparent {
+/* .v-calendar-weekly__day.v-future .v-calendar-weekly__day-label .v-btn.v-btn--depressed,
+.v-calendar-weekly__day.v-present .v-calendar-weekly__day-label .v-btn.v-btn--depressed
+*/
+/* .v-calendar-weekly__day.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed, */
+.v-calendar-weekly__day.v-future .v-calendar-weekly__day-label .v-btn.v-btn--depressed,
+.v-calendar-weekly__day.v-present .v-calendar-weekly__day-label .v-btn.v-btn--depressed{
   position: absolute;
   top: 0;
   left: 0;
@@ -76,7 +82,10 @@ div:empty {
   border-radius: 0;
 }
 
-.v-calendar-weekly__day.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small.transparent .v-btn__content {
+
+/* .v-calendar-weekly__day.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content, */
+.v-calendar-weekly__day.v-future .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content,
+.v-calendar-weekly__day.v-present .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content{
   position: absolute;
   top: 8px;
 }
@@ -84,4 +93,11 @@ div:empty {
 .v-dialog.v-dialog--active.v-dialog--persistent {
   border: 3px solid #228b22;
   /* box-sizing: border-box; */
+}
+
+/* Today */
+button.v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small.primary {
+    background: #d163f324!important;
+    border-radius: 50%;
+    color: #222;
 }
