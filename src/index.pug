@@ -1,0 +1,66 @@
+#app
+  v-app#inspire
+    ul
+     li - [ ] ToDo: 人ごとのポップアップ
+     li - [ ] ToDo: SortFilter on Bar Colors
+    v-row
+      v-col.mb-2.controls(sm='2', lg='2')
+        v-btn(fab='', small='', absolute='', left='', color='primary', @click='$refs.calendar.prev()')
+          v-icon(dark='') mdi-chevron-left
+        v-btn(fab='', small='', absolute='', right='', color='primary', @click='$refs.calendar.next()')
+          v-icon(dark='') mdi-chevron-right        
+        br        
+        br        
+        //- v-btn(@click="sortData(events.color)") Sort
+        br
+        v-select(v-model='type', :items='typeOptions', label='Type', hide-details='', outlined='', dense='')
+      v-col.pl-4(sm='10', lg='10')
+        v-sheet(height='800')
+          v-calendar(ref='calendar',
+          v-model='start',
+          :type='type',
+          :start='start',
+          :end='end',
+          :min-weeks='minWeeks',
+          :max-days='maxDays',
+          :now='now',
+          :dark='dark',
+          :weekdays='weekdays',
+          :first-interval='intervals.first',
+          :interval-minutes='intervals.minutes',
+          :interval-count='intervals.count',
+          :interval-height='intervals.height',
+          :interval-style='intervalStyle',
+          :show-interval-label='showIntervalLabel',
+          :short-intervals='shortIntervals',
+          :short-months='shortMonths',
+          :short-weekdays='shortWeekdays',
+          :color='color',
+          :events='events',
+          :event-overlap-mode='mode',
+          :event-overlap-threshold='45',
+          :event-color='getEventColor',
+          @change='getEvents',
+          @click:event='showEvent',
+          @click:more='viewMore',
+          @click:date='viewDay'          
+          @click:add='testEv',
+          )
+          
+    // Modal for Add new Event
+    v-dialog(v-model='dialog', persistent='', max-width='320')
+      template(v-slot:activator='{ on }')
+        v-btn(color='primary', v-on='on') Open Dialog
+      v-card      
+        v-card-title.headline {{ date }} 
+        v-card-text シフト新規追加
+        v-card-text
+         v-select(:items='names', label='メンバー選択', item-value='text')
+        v-card-text
+         v-select(:items='select', label='シフト種', item-value='text')
+        v-card-actions
+          v-spacer
+          .d-flex
+          v-btn(color='green darken-1', text='', @click='dialog = false') Cancel
+          v-btn(color='green darken-1', text='', @click='testEv') Save
+          
