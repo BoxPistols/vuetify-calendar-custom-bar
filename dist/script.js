@@ -115,6 +115,16 @@ new Vue({
       "三輪幸子",
       "結城純"
     ],
+    members: [
+       "山田太郎 看護師 上級",
+       "吉田花子　准看護師　中級",
+       "斎藤綾乃　看護補助者　初級",
+       "本山茂　看護師 上級",
+       "迫美香子　准看護師　中級",
+       "伊集院進ノ介　看護補助者　初級",
+       "三輪幸子　准看護師　中級",
+       "結城純　准看護師　中級"
+      ],
 
     type: "month",
     typeOptions: [
@@ -239,7 +249,14 @@ new Vue({
       });
     },
     testEv({add}) {
-      alert("Add Event");
+      // alert("Add Event");
+      // this.date = date;
+      this.event = event;
+      // this.members　= members
+      // alert(this.members[0] + "を" + this.date + "に追加します");
+      // alert(this.members[0] + "を" + this.date + "に追加します");
+      alert(this.members[this.rnd(0, this.members.length - 1)] + "を" + this.date + "に追加します");
+
       this.dialog = false;
     },
     viewDay({date}) {
@@ -284,7 +301,7 @@ new Vue({
       const min = new Date(`${start.date}T00:00:00`);
       const max = new Date(`${end.date}T23:59:59`);
       const days = (max.getTime() - min.getTime()) / 86400000;
-      const eventCount = this.rnd(days, days + 30 * 5);
+      const eventCount = this.rnd(days, days + 25 * 5);
 
       for (let i = 0; i < eventCount; i++) {
         const allDay = this.rnd(0, 3) === 0;
