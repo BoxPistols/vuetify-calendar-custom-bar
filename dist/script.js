@@ -49,6 +49,39 @@ new Vue({
   el: "#app",
   vuetify: new Vuetify(),
   data: () => ({
+    focus: "",
+    // typeToLabel: {
+    //   month: "Month",
+    //   week: "Week",
+    //   day: "Day",
+    //   "4day": "4 Days"
+    // },
+    start: null,
+    end: null,
+    selectedEvent: {},
+    selectedElement: null,
+    selectedOpen: false,
+    events: [],
+    colors: [
+      "blue",
+      "indigo",
+      "deep-purple",
+      "cyan",
+      "green",
+      "orange",
+      "grey darken-1"
+    ],
+    names: [
+      "Meeting",
+      "Holiday",
+      "PTO",
+      "Travel",
+      "Event",
+      "Birthday",
+      "Conference",
+      "Party"
+    ],
+
     date: "",
     days: "",
     day: "",
@@ -225,17 +258,18 @@ new Vue({
     },
     showEvent({nativeEvent, event}) {
       const open = () => {
-        //alert(this.selectedElement)
         this.selectedEvent = event;
         this.selectedElement = nativeEvent.target;
         setTimeout(() => (this.selectedOpen = true), 10);
       };
+
       if (this.selectedOpen) {
         this.selectedOpen = false;
         setTimeout(open, 10);
       } else {
         open();
       }
+
       nativeEvent.stopPropagation();
     },
     getEventColor(event) {
