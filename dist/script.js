@@ -115,15 +115,15 @@ new Vue({
       "結城純"
     ],
     members: [
-       "山田太郎 看護師 上級",
-       "吉田花子　准看護師　中級",
-       "斎藤綾乃　看護補助者　初級",
-       "本山茂　看護師 上級",
-       "迫美香子　准看護師　中級",
-       "伊集院進ノ介　看護補助者　初級",
-       "三輪幸子　准看護師　中級",
-       "結城純　准看護師　中級"
-      ],
+      "山田太郎 看護師 上級",
+      "吉田花子　准看護師　中級",
+      "斎藤綾乃　看護補助者　初級",
+      "本山茂　看護師 上級",
+      "迫美香子　准看護師　中級",
+      "伊集院進ノ介　看護補助者　初級",
+      "三輪幸子　准看護師　中級",
+      "結城純　准看護師　中級"
+    ],
 
     type: "month",
     typeOptions: [
@@ -237,6 +237,32 @@ new Vue({
           "custom-daily": 1
         }
       );
+    },
+    functionEvents() {
+      return this.month ? this.monthFunctionEvents : this.dateFunctionEvents;
+    },
+    monthFormatter() {
+      return this.$refs.calendar.getFormatter({
+        timeZone: "UTC",
+        month: "long"
+      });
+    },
+    title() {
+      const {start, end} = this;
+      if (!start || !end) {
+        return "";
+      }
+        //       const startMonth = this.monthFormatter(start);
+        // const endMonth = this.monthFormatter(end);
+        // const suffixMonth = startMonth === endMonth ? "" : endMonth;
+
+        // const startYear = start.year;
+        // const endYear = end.year;
+        // const suffixYear = startYear === endYear ? "" : endYear;
+
+        // const startDay = start.day + this.nth(start.day);
+        // const endDay = end.day + this.nth(end.day);
+
     }
   },
 
@@ -254,7 +280,12 @@ new Vue({
       // this.members　= members
       // alert(this.members[0] + "を" + this.date + "に追加します");
       // alert(this.members[0] + "を" + this.date + "に追加します");
-      alert(this.members[this.rnd(0, this.members.length - 1)] + "を" + this.date + "に追加します");
+      alert(
+        this.members[this.rnd(0, this.members.length - 1)] +
+          "を" +
+          this.date +
+          "に追加します"
+      );
 
       this.dialog = false;
     },
@@ -271,6 +302,15 @@ new Vue({
       this.focus = more;
       this.type = "day";
       //this.dialog = true;
+    },
+    setToday() {
+      this.focus = this.today;
+    },
+    prev() {
+      this.$refs.calendar.prev();
+    },
+    next() {
+      this.$refs.calendar.next();
     },
     showEvent({nativeEvent, event}) {
       const open = () => {
