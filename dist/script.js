@@ -300,7 +300,7 @@ new Vue({
       const min = new Date(`${start.date}T00:00:00`);
       const max = new Date(`${end.date}T23:59:59`);
       const days = (max.getTime() - min.getTime()) / 86400000;
-      const eventCount = this.rnd(days, days + 25 * 5);
+      const eventCount = this.rnd(days, days + 30 * 15);
 
       for (let i = 0; i < eventCount; i++) {
         const allDay = this.rnd(0, 3) === 0;
