@@ -97,8 +97,8 @@ div:empty {
 
 /* Today */
 button.v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small.primary {
-  background: #d163f324 !important;
-  border-radius: 50%;
+  background: #eeeeee !important;
+  border-radius: 0%;
   color: #222;
 }
 
@@ -106,25 +106,6 @@ button.v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small
   height: 95%;
 }
 
-
-/* -------------------- */
-
-
-/* .v-event.v-event-start.v-event-end {
-  width: auto;
-  display: inline-flex !important;
-  min-width: auto;
-  width: auto !important;
-  max-width: -webkit-fit-content !important;
-  max-width: -moz-fit-content !important;
-  max-width: fit-content !important;
-  padding: 1px 4px 3px 0;
-  margin-right: 4px;
-  border-radius: 2px;
-  box-shadow: 1px 2px 2px #ccc;
-  background-color: gray;
-  transition: 0.2s;
-} */
 
 .v-event.v-event-start.v-event-end:hover {
   box-shadow: none;
@@ -232,13 +213,6 @@ div:empty {
 .v-dialog.v-dialog--active.v-dialog--persistent {
   border: 3px solid #228b22;
   /* box-sizing: border-box; */
-}
-
-/* Today */
-button.v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small.primary {
-  background: #d163f324 !important;
-  border-radius: 50%;
-  color: #222;
 }
 
 .v-calendar-weekly__head-weekday {

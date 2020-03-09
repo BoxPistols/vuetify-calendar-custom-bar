@@ -1,7 +1,3 @@
-// document.querySelector(".v-btn__content").onclick = function() {
-//  console.log(this)
-// };
-
 const weekdaysDefault = [1, 2, 3, 4, 5, 6, 0];
 
 const intervalsDefault = {
@@ -87,7 +83,7 @@ new Vue({
     day: "",
     dark: false,
     startMenu: false,
-    start: "2020-03-1",
+    start: "2020-03-01",
     endMenu: false,
     end: "2020-03-31",
     minWeeks: 1,
@@ -129,8 +125,8 @@ new Vue({
     typeOptions: [
       // { text: "Day", value: "day" },
       // { text: "4 Day", value: "4day" },
-      {text: "シフト一覧", value: "month"},
-      {text: "詳細", value: "week"}
+      {text: "シフト一覧・月間", value: "month"},
+      {text: "詳細・週間", value: "week"}
       // { text: "Custom Daily", value: "custom-daily" },
       // { text: "Custom Weekly", value: "custom-weekly" }
     ],
@@ -215,55 +211,41 @@ new Vue({
 
   computed: {
     // Calendar
-    intervalStyle() {
-      return stylings[this.styleInterval].bind(this);
-    },
-    hasIntervals() {
-      return (
-        this.type in
-        {
-          week: 1,
-          day: 1,
-          "4day": 1,
-          "custom-daily": 1
-        }
-      );
-    },
-    hasEnd() {
-      return (
-        this.type in
-        {
-          "custom-weekly": 1,
-          "custom-daily": 1
-        }
-      );
+    // intervalStyle() {
+    //   return stylings[this.styleInterval].bind(this);
+    // },
+    // hasIntervals() {
+    //   return (
+    //     this.type in
+    //     {
+    //       week: 1,
+    //       day: 1,
+    //       "4day": 1,
+    //       "custom-daily": 1
+    //     }
+    //   );
+    // },
+    // hasEnd() {
+    //   return (
+    //     this.type in
+    //     {
+    //       "custom-weekly": 1,
+    //       "custom-daily": 1
+    //     }
+    //   );
+    // },
+    monthFormatter() {
+      return this.$refs.calendar.getFormatter({
+        timeZone: "UTC",
+        month: "short"
+      });
     },
     functionEvents() {
       return this.month ? this.monthFunctionEvents : this.dateFunctionEvents;
     },
-    monthFormatter() {
-      return this.$refs.calendar.getFormatter({
-        timeZone: "UTC",
-        month: "long"
-      });
-    },
     title() {
-      const {start, end} = this;
-      if (!start || !end) {
-        return "";
-      }
-        //       const startMonth = this.monthFormatter(start);
-        // const endMonth = this.monthFormatter(end);
-        // const suffixMonth = startMonth === endMonth ? "" : endMonth;
-
-        // const startYear = start.year;
-        // const endYear = end.year;
-        // const suffixYear = startYear === endYear ? "" : endYear;
-
-        // const startDay = start.day + this.nth(start.day);
-        // const endDay = end.day + this.nth(end.day);
-
-    }
+      return this.start.slice(0,7).split('-').join('/')
+    },
   },
 
   methods: {
@@ -277,26 +259,19 @@ new Vue({
       // alert("Add Event");
       // this.date = date;
       this.event = event;
-      // this.members　= members
-      // alert(this.members[0] + "を" + this.date + "に追加します");
-      // alert(this.members[0] + "を" + this.date + "に追加します");
-      alert(
-        this.members[this.rnd(0, this.members.length - 1)] +
-          "を" +
-          this.date +
-          "に追加します"
-      );
+      // alert(
+      //   this.members[this.rnd(0, this.members.length - 1)] +
+      //     "を" +
+      //     this.date +
+      //     "に追加します"
+      // );
 
       this.dialog = false;
     },
     viewDay({date}) {
       this.focus = date;
-      //this.type = "day";
-      // add new dialog
       this.dialog = true;
       this.date = date;
-      //this.days = date.week
-      //alert(date)
     },
     viewMore({more}) {
       this.focus = more;
@@ -304,7 +279,7 @@ new Vue({
       //this.dialog = true;
     },
     setToday() {
-      this.focus = this.today;
+      this.focus = now;
     },
     prev() {
       this.$refs.calendar.prev();
