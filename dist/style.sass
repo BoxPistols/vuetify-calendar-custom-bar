@@ -1,0 +1,165 @@
+.controls
+  position: relative
+
+div:empty
+  display: none
+
+.pl-1
+  font-size: 11px
+  font-weight: 600
+
+  strong
+    display: none
+
+.v-calendar
+  .v-event, .v-event-more
+    font-size: 12px
+    line-height: 1.6
+    position: relative
+    z-index: 1
+    display: inline-block
+    overflow: hidden
+    max-width: fit-content
+    margin: 0 2px
+    padding: 2px 4px 0 1px
+    cursor: pointer
+    white-space: nowrap
+    text-overflow: ellipsis
+    border-radius: 2px
+    box-shadow: 0 1px 1px #ccc
+
+.v-calendar-daily__body
+  display: none
+
+.v-calendar-daily
+  overflow: scroll
+  border-top: 1px solid #e0e0e0
+  border-left: 1px solid #e0e0e0
+  background-color: #fff
+
+.v-calendar-daily_head-day
+  position: relative
+  overflow: scroll
+  width: 0
+  flex: 1 1 auto
+
+.v-overlay.v-overlay--active
+  color: #fff
+  background: rgba(88, 88, 88, 0.2)
+
+/* TODO v-past = old Day
+
+.v-calendar-weekly__day
+  &.v-past, &.v-future, &.v-present
+    position: relative
+    padding-top: 24px
+    transition: .2s
+
+  &.v-past:hover, &.v-future:hover, &.v-present:hover
+    cursor: pointer
+    background-color: #f0fffc
+
+.v-dialog.v-dialog--active.v-dialog--persistent
+  border: 3px solid #228b22
+
+* Today
+
+button.v-btn.v-btn--depressed.v-btn--fab.v-btn--round.theme--light.v-size--small.primary
+  color: #222
+  border-radius: 0
+  background: #eee !important
+
+.v-calendar-daily__head
+  height: 95%
+
+.v-event.v-event-start.v-event-end:hover
+  transform: scale(1.2, 1.2)
+  box-shadow: none
+  box-shadow: 1px 4px 4px #eee
+
+.v-input.v-input--is-label-active.v-input--is-dirty.theme--light.v-text-field.v-text-field--is-booted.v-select
+  max-width: 200px
+
+/* -------------add ----------
+
+.controls
+  position: relative
+
+div:empty
+  display: none
+
+.pl-1
+  font-size: 11px
+  font-weight: 600
+
+  strong
+    display: none
+
+.v-calendar
+  .v-event, .v-event-more
+    font-size: 12px
+    line-height: 1.6
+    position: relative
+    z-index: 1
+    display: inline-block
+    overflow: hidden
+    max-width: fit-content
+    margin: 0 2px
+    padding: 2px 4px 0 1px
+    cursor: pointer
+    white-space: nowrap
+    text-overflow: ellipsis
+    border-radius: 2px
+    box-shadow: 0 1px 1px #ccc
+
+.v-calendar-daily__body
+  display: none
+
+.v-calendar-daily
+  overflow: scroll
+  border-top: 1px solid #e0e0e0
+  border-left: 1px solid #e0e0e0
+  background-color: #fff
+
+.v-calendar-daily_head-day
+  position: relative
+  overflow: scroll
+  width: 0
+  flex: 1 1 auto
+
+.v-overlay.v-overlay--active
+  color: #fff
+  background: rgba(88, 88, 88, 0.2)
+
+/* TODO v-past = old Day
+
+.v-calendar-weekly__day
+  &.v-past, &.v-future, &.v-present
+    position: relative
+    padding-top: 24px
+    transition: .2s
+
+  &.v-past:hover, &.v-future:hover, &.v-present:hover
+    cursor: pointer
+    background-color: #f0fffc
+
+  &.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed, &.v-future .v-calendar-weekly__day-label .v-btn.v-btn--depressed, &.v-present .v-calendar-weekly__day-label .v-btn.v-btn--depressed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    border-radius: 0
+
+  &.v-past .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content, &.v-future .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content, &.v-present .v-calendar-weekly__day-label .v-btn.v-btn--depressed.v-btn--fab .v-btn__content
+    position: absolute
+    top: 8px
+
+.v-dialog.v-dialog--active.v-dialog--persistent
+  border: 3px solid #228b22
+
+.v-calendar-weekly__head-weekday
+  font-size: 12px
+  margin: -1px -1px 0
+  border: 1px solid #ccc
+  background: #f3f3ee
