@@ -9,15 +9,12 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Material+Icons'>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/vuetify@2.2.13/dist/vuetify.min.css'>
   <link rel="stylesheet" href="./style.css">
-
 </head>
 
 <body>
   <div id="app">
     <v-app id="inspire">
       <v-row>
-
-
         <v-container fluid>
           <v-row>
             <v-col class="d-flex justify-space-around" cols="12">
@@ -39,7 +36,8 @@
 
                   <!-- <v-btn outlined class="ml-1" color="orange darken-3" @click="setToday">今月</v-btn> -->
                   <v-col class="controls">
-                    <v-select v-model="type" :items="typeOptions" label="表示" hide-details="" outlined="" dense=""></v-select>
+                    <v-select v-model="type" :items="typeOptions" label="表示" hide-details="" outlined="" dense="">
+                    </v-select>
                   </v-col>
 
                   <v-menu bottom right>
@@ -57,57 +55,84 @@
         <v-col class="pl-4">
 
           <v-sheet height="960">
-            <v-calendar ref="calendar" v-model="start" :type="type" :start="start" :end="end" :min-weeks="minWeeks" :max-days="maxDays" :now="today" :dark="dark" :weekdays="weekdays" :first-interval="intervals.first"
-              :interval-minutes="intervals.minutes" :interval-count="intervals.count" :interval-height="intervals.height" :interval-style="intervalStyle" :show-interval-label="showIntervalLabel" :short-intervals="shortIntervals"
-              :short-months="shortMonths" :short-weekdays="shortWeekdays" :color="color" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="45" :event-color="getEventColor" @change="getEvents" @click:event="showEvent"
-              @click:more="viewMore" @click:date="viewDay" @click:add="testEv">
+            <v-calendar
+              ref="calendar"
+              v-model="start"
+              :type="type"
+              :start="start"
+              :end="end"
+              :min-weeks="minWeeks"
+              :max-days="maxDays"
+              :now="today"
+              :dark="dark"
+              :weekdays="weekdays"
+              :first-interval="intervals.first"            
+              :interval-minutes="intervals.minutes"
+              :interval-count="intervals.count"          
+              :interval-height="intervals.height"
+              :interval-style="intervalStyle"
+              :show-interval-label="showIntervalLabel"
+              :short-intervals="shortIntervals"
+              :short-months="shortMonths"
+              :short-weekdays="shortWeekdays"
+              :color="color"
+              :events="events"
+              :event-overlap-mode="mode"
+              :event-overlap-threshold="45"            
+              :event-color="getEventColor"
+              @change="getEvents"
+              @click:event="showEvent"            
+              @click:more="viewMore"
+              @click:date="viewDay"
+              @click:add="testEv"
+            >
             </v-calendar>
 
             <!-- modal content -->
-                <v-menu v-model="selectedOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
+            <v-menu v-model="selectedOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
 
-                  <v-card color="grey lighten-4" min-width="300px" flat>
-                    <v-toolbar :color="selectedEvent.color" dark>
+              <v-card color="grey lighten-4" min-width="300px" flat>
+                <v-toolbar :color="selectedEvent.color" dark>
 
-                      <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
-                      <v-spacer></v-spacer>
-                      <v-toolbar-title v-html="selectedEvent.belong" class="ml-4"></v-toolbar-title>
-                      <v-spacer></v-spacer>
-                      <v-toolbar-title v-html="selectedEvent.class" class="ml-4"></v-toolbar-title>
-                      <v-spacer></v-spacer>
-                      <v-toolbar-title v-html="selectedEvent.job" class="ml-4"></v-toolbar-title>
+                  <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-toolbar-title v-html="selectedEvent.belong" class="ml-4"></v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-toolbar-title v-html="selectedEvent.class" class="ml-4"></v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-toolbar-title v-html="selectedEvent.job" class="ml-4"></v-toolbar-title>
 
-                      <v-spacer></v-spacer>
+                  <v-spacer></v-spacer>
 
-                      <v-btn icon>
-                        <v-icon> delete</v-icon>
-                      </v-btn>
-                    </v-toolbar>
+                  <v-btn icon>
+                    <v-icon> delete</v-icon>
+                  </v-btn>
+                </v-toolbar>
 
 
-                    <v-card-actions>
-                      <v-btn icon>
-                        <v-icon>
-                          mdi-pencil
-                        </v-icon>
-                      </v-btn>
+                <v-card-actions>
+                  <v-btn icon>
+                    <v-icon>
+                      mdi-pencil
+                    </v-icon>
+                  </v-btn>
 
-                      <v-card-text>
-                        <v-row justify="space-around">
-                          <v-col cols="４">
-                            <v-select v-model="work" :items="select" label="希望変更"></v-select>
-                          </v-col>
-                        </v-row>
-                      </v-card-text>
-                      <v-btn text-color="secondary" outlined color="grey" @click="selectedOpen = false">
-                        Cancel
-                      </v-btn>
-                      <v-btn text-color="primary" class="ml-2" outlined color="teal" @click="selectedOpen = false">
-                        Save
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-menu>
+                  <v-card-text>
+                    <v-row justify="space-around">
+                      <v-col cols="４">
+                        <v-select v-model="work" :items="select" label="希望変更"></v-select>
+                      </v-col>
+                    </v-row>
+                  </v-card-text>
+                  <v-btn text-color="secondary" outlined color="grey" @click="selectedOpen = false">
+                    Cancel
+                  </v-btn>
+                  <v-btn text-color="primary" class="ml-2" outlined color="teal" @click="selectedOpen = false">
+                    Save
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-menu>
 
           </v-sheet>
         </v-col>
